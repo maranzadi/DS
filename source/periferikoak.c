@@ -10,6 +10,7 @@ periferikoak.c
 
 
 int tekla; // Sakatutako tekla gordetzeko aldagaia; baloratu ea behar den
+touchPosition pos_pantaila; // aldagai globala
 
 
 
@@ -43,6 +44,19 @@ int SakatutakoTekla()
 	
 
 }
+
+
+
+int ukimenUkitua() {
+ touchRead(&pos_pantaila); // libnds-ko funtzioa
+ // Ez badago pixelik ukituta, return 0, bestela 1
+ return !(pos_pantaila.px==0 && pos_pantaila.py==0);
+}
+
+void ukimenPos(int *lekua){
+	&lekua= touchRead(&pos_pantaila);
+}
+
 
 void konfiguratuTeklatua(int TEK_konf)
 {
