@@ -19,6 +19,8 @@ adibide batean oinarrituta.
 
 int denb; // denbora neurtzen joateko; baloratu ea beharrezkoa den
 
+const char *lista[] = {"A", "B", "SELECT", "START", "ESKUBI","EZKER", "GORA", "BEHERA", "R", "L"};
+
 void jokoa01()
 {	
 	// Aldagai baten definizioa
@@ -53,7 +55,7 @@ void jokoa01()
 	
 		if(TeklaDetektatu() ==1){
 			tekla=SakatutakoTekla();
-			iprintf("\x1b[23;5Tekla sakatuta. Balioa=%d", tekla);
+			iprintf("\x1b[23;5Tekla sakatuta. Balioa=%d", a[tekla]);
 
 		}
 			
