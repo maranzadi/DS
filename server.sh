@@ -6,6 +6,7 @@ hash=1
 
 
 dowload() {
+  cp $carpeta $carpetaPrincital
   cd $carpetaPrincital/$carpeta
   make
   python -m SimpleHTTPServer 8000 > /dev/null 2>&1
@@ -16,7 +17,7 @@ PID=$!
 trap 'echo "Matando servidor $SERVER_PID"; kill $SERVER_PID 2>/dev/null' EXIT
 
 
-while [[ 1=1 ]]; do
+while true; do
   
   newHash=  find $carpeta -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256
   if [[ hash !=newHash ]]; then
@@ -25,6 +26,7 @@ while [[ 1=1 ]]; do
 
     cp $carpeta $carpetaPrincital
     cd $carpetaPrincital/$carpeta
+    echo "------------------------------"
     make
     
   fi
