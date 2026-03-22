@@ -30,5 +30,6 @@ while true; do
     make
     
   fi
+  sleep 5
 done
 
