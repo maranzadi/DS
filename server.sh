@@ -1,19 +1,32 @@
 #/bin/bash
 
 carpeta=$1
-
+carpetaPrincital=/ds
 hash=1
+
+
+dowload() {
+  cd $carpetaPrincital/$carpeta
+  make
+  python -m SimpleHTTPServer 8000
+}
+
+dowload &
+PID=$!
+trap 'echo "Matando servidor $SERVER_PID"; kill $SERVER_PID 2>/dev/null' EXIT
+
 
 while [[ 1=1 ]]; do
   
   newHash=  find $carpeta -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256
   if [[ hash !=newHash ]]; then
     
-    rm -rf /ds/$carpeta
+    rm -rf $carpetaPrincital/$carpeta
 
-    cp $carpeta /ds
-    cd /ds/$carpeta
+    cp $carpeta $carpetaPrincital
+    cd $carpetaPrincital/$carpeta
     make
+    
   fi
 done
 
