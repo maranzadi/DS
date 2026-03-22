@@ -24,10 +24,14 @@ while true; do
     
     rm -rf $carpetaPrincital/$carpeta
 
+    actualPWD=$(pwd)
+
     cp $carpeta $carpetaPrincital
     cd $carpetaPrincital/$carpeta
     echo "------------------------------"
     make
+
+    cd $actualPWD
     
   fi
   sleep 5
