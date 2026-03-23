@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 carpeta=$1
 carpetaPrincital=/ds
@@ -7,7 +7,7 @@ hash=1
 
 dowload() {
   echo "server montado"
-  cp $carpeta $carpetaPrincital
+  cp -r $carpeta $carpetaPrincital
   cd $carpetaPrincital/$carpeta
   make clean
   make
@@ -16,7 +16,7 @@ dowload() {
 
 dowload &
 PID=$!
-trap 'echo "Matando servidor $SERVER_PID"; kill $SERVER_PID 2>/dev/null' EXIT
+trap 'echo "Matando servidor $PID"; kill $SERVER_PID 2>/dev/null' EXIT
 
 
 while true; do
@@ -24,12 +24,12 @@ while true; do
   newHash=$(find $carpeta -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256)
   if [[ hash !=newHash ]]; then
 
-    $hash=$newHash
+    hash=$newHash
     rm -rf $carpetaPrincital/$carpeta
 
     actualPWD=$(pwd)
 
-    cp $carpeta $carpetaPrincital
+    cp -r $carpeta $carpetaPrincital
     cd $carpetaPrincital/$carpeta
     echo "------------------------------"
     make clean
