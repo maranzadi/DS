@@ -6,8 +6,10 @@ hash=1
 
 
 dowload() {
+  echo "server montado"
   cp $carpeta $carpetaPrincital
   cd $carpetaPrincital/$carpeta
+  make clean
   make
   python -m SimpleHTTPServer 8000 > /dev/null 2>&1
 }
@@ -21,7 +23,8 @@ while true; do
   
   newHash=$(find $carpeta -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256)
   if [[ hash !=newHash ]]; then
-    
+
+    $hash=$newHash
     rm -rf $carpetaPrincital/$carpeta
 
     actualPWD=$(pwd)
@@ -29,6 +32,7 @@ while true; do
     cp $carpeta $carpetaPrincital
     cd $carpetaPrincital/$carpeta
     echo "------------------------------"
+    make clean
     make
 
     cd $actualPWD
