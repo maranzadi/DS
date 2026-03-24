@@ -1,7 +1,7 @@
 #!/bin/bash
 
 carpeta=$1
-carpetaPrincital=/ds
+carpetaPrincital=//home/user/ds
 hash=1
 
 
