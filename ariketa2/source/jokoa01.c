@@ -28,6 +28,7 @@ u16 color = RGB15(rgb[0], rgb[1], rgb[2]);
 
 int kolorea=0;
 
+float presioa(int z1, int z2, int x);
 void jokoa01()
 {	
 	// Aldagai baten definizioa
@@ -111,6 +112,7 @@ void jokoa01()
 			{
 				rgb[kolorea]=255
 			}
+			color = RGB15(rgb[0], rgb[1], rgb[2]);
 
 			iprintf("\x1b[1;10H\033[K");
 			iprintf("\x1b[1;10HAldagai. RGB=%d, %d, %d", rgb[0], rgb[1], rgb[2]);
@@ -127,14 +129,39 @@ void jokoa01()
 			pos_pantaila = ukimenPos(); 
 
 			
-			for (size_t i = 0; i < 2; i++)
+			for (size_t i = 0; i < 3; i++)
 			{
 				iprintf("\x1b[%d;1H\033[K", i+6);
 			}
 			
 
-			iprintf("\x1b[6;1HposX=%d, posY=%d", pos_pantaila.px, pos_pantaila.py);
+			int x= pos_pantaila.px;
+			int y= pos_pantaila.py;
+			float pres= presioa(pos_pantaila.z1, pos_pantaila.z2, x)
+			iprintf("\x1b[6;1HposX=%d, posY=%d", x, y);
 			iprintf("\x1b[7;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
+			iprintf("\x1b[8;1HPres: %04X", pres);
+
+			
+			float minP = 100;   // presión fuerte
+			float maxP = 3000;  // presión débil
+
+			float t = (pres - minP) / (maxP - minP);
+
+			// Clamp
+			if (t < 0) t = 0;
+			if (t > 1) t = 1;
+
+			
+			t = 1.0f - t;
+
+			// Escalar a radio
+			int radius = 1 + t * 20;
+			drawCircle(x, y, radius, color)
+
+
+			iprintf("\x1b[1;10H\033[K");
+			iprintf("\x1b[1;10HAldagai. RGB=%d, %d, %d", rgb[0], rgb[1], rgb[2]);
 
 		}else{
 			for (size_t i = 0; i < 3*2; i=i+2)
@@ -155,3 +182,16 @@ void jokoa01()
 
 /***********************2025-2026*******************************/
 
+float presioa(int z1, int z2, int x){
+	if (z1 != 0) {
+		float rtouch = px * ((float)z2 / z1 - 1.0f);
+
+		// Umbral típico
+		if (rtouch < 1000) {
+			return rtouch;
+		}else{
+			return 0;
+		}
+	}
+	return 0;
+}
