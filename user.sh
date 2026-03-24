@@ -1,15 +1,14 @@
 #!/bin/bash
 
 partekatu=$1
-horain=$(pwd)
-ip=$2
+#ip=$2
+
+shared=/home/manex/virtualBox/Shared
 
 while true; do
 
-  rm -rf $partekatu
-  cp -r $horain
-
-  wget $2
+  rm -rf $shared/$partekatu
+  cp -r $partekatu $shared
 
   sleep 5
 done
