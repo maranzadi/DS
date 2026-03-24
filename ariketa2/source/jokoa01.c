@@ -16,6 +16,7 @@ adibide batean oinarrituta.
 #include "periferikoak.h"
 #include "zerbitzuErrutinak.h"
 #include "fondoak.h"
+#include "spriteak.h"
 
 int denb; // denbora neurtzen joateko; baloratu ea beharrezkoa den
 
@@ -24,7 +25,7 @@ touchPosition pos_pantaila; // aldagai globala
 
 
 
-u16 rgbKol15(int r, int g, int b);
+
 
 int kolorea=0;
 
@@ -32,7 +33,7 @@ float presioa(int z1, int z2, int x);
 void jokoa01()
 {	
 	int rgbKol[3] = {0, 0, 0};
-    u16 color = rgbKol15(rgbKol[0], rgbKol[1], rgbKol[2]);
+    u16 color = RGB15(rgbKol[0], rgbKol[1], rgbKol[2]);
 	// Aldagai baten definizioa
 	int i=9;
 	int tekla=0;;
@@ -102,27 +103,27 @@ void jokoa01()
 
 			if (tekla=GORA)
 			{
-				rgbKol[kolorea]+=10;
+				rgbKol[kolorea]+=2;
 			}else if (tekla=BEHERA)
 			{
-				rgbKol[kolorea]-=10;
+				rgbKol[kolorea]-=2;
 			}
 			if (rgbKol[kolorea]<0)
 			{
 				rgbKol[kolorea]=0;
-			}else if (rgbKol[kolorea]>255)
+			}else if (rgbKol[kolorea]>31)
 			{
-				rgbKol[kolorea]=255;
+				rgbKol[kolorea]=31;
 			}
-			color = rgbKol15(rgbKol[0], rgbKol[1], rgbKol[2]);
+			color = RGB15(rgbKol[0], rgbKol[1], rgbKol[2]);
 
-			iprintf("\x1b[1;10H\033[K");
-			iprintf("\x1b[1;10HAldagai. rgb=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
+			iprintf("\x1b[1;1H\033[K");
+			iprintf("\x1b[5;1HAldagai. rgb=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
 			iprintf("\x1b[7;1HKolorea: %d", kolorea);
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
 		}else{
-			iprintf("\x1b[1;1H\033[K");
+			
 			iprintf("\x1b[1;1HAldagai. Balioa=null");
 		}
 
@@ -133,16 +134,16 @@ void jokoa01()
 			size_t i;
 			for (i = 0; i < 3; i++)
 			{
-				iprintf("\x1b[%d;1H\033[K", i+6);
+				iprintf("\x1b[%d;1H\033[K", i+12);
 			}
 			
 
 			int x= pos_pantaila.px;
 			int y= pos_pantaila.py;
 			float pres= presioa(pos_pantaila.z1, pos_pantaila.z2, x);
-			iprintf("\x1b[6;1HposX=%d, posY=%d", x, y);
-			iprintf("\x1b[7;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
-			iprintf("\x1b[8;1HPres: %04X", pres);
+			iprintf("\x1b[12;1HposX=%d, posY=%d", x, y);
+			iprintf("\x1b[13;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
+			iprintf("\x1b[14;1HPres: %04X", pres);
 
 			
 			float minP = 100;   // presión fuerte
@@ -162,8 +163,8 @@ void jokoa01()
 			drawCircle(x, y, radius, color);
 
 
-			iprintf("\x1b[1;10H\033[K");
-			iprintf("\x1b[1;10HAldagai. rgbKol=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
+			iprintf("\x1b[1;18H\033[K");
+			iprintf("\x1b[1;18HAldagai. rgbKol=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
 
 		}else{
 			size_t i;
