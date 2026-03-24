@@ -23,6 +23,11 @@ const char *lista[] = {"A", "B", "SELECT", "START", "ESKUBI","EZKER", "GORA", "B
 touchPosition pos_pantaila; // aldagai globala
 
 
+int *rgb[]={0,0,0}
+u16 color = RGB15(rgb[0], rgb[1], rgb[2]);
+
+int kolorea=0;
+
 void jokoa01()
 {	
 	// Aldagai baten definizioa
@@ -30,6 +35,8 @@ void jokoa01()
 	int tekla=0;;
 
 	EGOERA=ZAI;
+
+	swiWaitForVBlank();
 	
 	
 	//iprintf("\x1b[22;5HHau idazte proba bat da");	// Hau 22 lerroan eta 5 zutabean hasiko da idazten.
@@ -68,7 +75,40 @@ void jokoa01()
 			iprintf("\x1b[1;1H\033[K");
 			iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
 			//iprintf("\x1b[23;5HTekla sakatuta. Balioa=%c", lista[tekla]);
+			iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
 
+			if (tekla=R)
+			{
+				kolorea++;
+			}else if (tekla=L)
+			{
+				kolorea++;
+			}
+			
+
+			if (kolorea>2)
+			{
+				kolorea=0;
+			}else if (kolorea<0)
+			{
+				kolorea=2;
+			}
+
+			if (tekla=GORA)
+			{
+				lista[kolorea]+=10;
+			}else if (tekla=BEHERA)
+			{
+				lista[kolorea]-=10;
+			}
+			if (lista[kolorea]<0)
+			{
+				lista[kolorea]=0;
+			}else if (lista[kolorea]>255)
+			{
+				lista[kolorea]=255
+			}
+			
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
 		}else{
@@ -81,16 +121,15 @@ void jokoa01()
 			pos_pantaila = ukimenPos(); 
 
 			
-			for (size_t i = 0; i < 3*2; i=i+2)
+			for (size_t i = 0; i < 2; i++)
 			{
 				iprintf("\x1b[%d;1H\033[K", i+8);
 			
 			}
 			
 
-			iprintf("\x1b[8;1HposX=%d", pos_pantaila.px);
-			iprintf("\x1b[10;1HposY=%d", pos_pantaila.py);
-			printf("\x1b[12;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
+			iprintf("\x1b[8;1HposX=%d, posY=%d", pos_pantaila.px, pos_pantaila.py);
+			iprintf("\x1b[9;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
 
 		}else{
 			for (size_t i = 0; i < 3*2; i=i+2)
@@ -101,7 +140,7 @@ void jokoa01()
 
 			iprintf("\x1b[8;1HposX=%d", 0);
 			iprintf("\x1b[10;1HposY=%d", 0);
-			printf("\x1b[12;1HRaw: %04X, %04X", 0, 0);
+			iprintf("\x1b[12;1HRaw: %04X, %04X", 0, 0);
 		}
 		
 			
