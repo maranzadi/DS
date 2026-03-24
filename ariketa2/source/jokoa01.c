@@ -118,7 +118,7 @@ void jokoa01()
 			color = RGB15(rgbKol[0], rgbKol[1], rgbKol[2]);
 
 			iprintf("\x1b[1;1H\033[K");
-			iprintf("\x1b[5;1HAldagai. rgb=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
+			iprintf("\x1b[5;1Hrgb=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
 			iprintf("\x1b[7;1HKolorea: %d", kolorea);
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
@@ -143,7 +143,7 @@ void jokoa01()
 			float pres= presioa(pos_pantaila.z1, pos_pantaila.z2, x);
 			iprintf("\x1b[12;1HposX=%d, posY=%d", x, y);
 			iprintf("\x1b[13;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
-			iprintf("\x1b[14;1HPres: %04X", pres);
+			iprintf("\x1b[14;1HPres: %f", pres);
 
 			
 			float minP = 100;   // presión fuerte
@@ -161,6 +161,7 @@ void jokoa01()
 			// Escalar a radio
 			int radius = 1 + t * 20;
 			drawCircle(x, y, radius, color);
+			iprintf("\x1b[14;1HRadius: %d", radius);
 
 
 			iprintf("\x1b[1;18H\033[K");
@@ -174,8 +175,8 @@ void jokoa01()
 			
 			}
 
-			iprintf("\x1b[6;1HposX=%d, posY=%d", 0, 0);
-			iprintf("\x1b[7;1HRaw: %04X, %04X", 0, 0);
+			iprintf("\x1b[12;1HposX=%d, posY=%d", 0, 0);
+			iprintf("\x1b[13;1HRaw: %f, %f", 0, 0);
 
 		}
 		
