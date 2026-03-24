@@ -59,9 +59,9 @@ void jokoa01()
 			//consoleClear();
 			
 
-			if(tekla==3){
-				erakutsiAteaIrekita();
-			}
+			// if(tekla==3){
+			// 	erakutsiAteaIrekita();
+			// }
 
 			//consoleClear();
 			tekla=SakatutakoTekla();
@@ -70,6 +70,8 @@ void jokoa01()
 
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
+		}else{
+			iprintf("\x1b[1;1HAldagai. Balioa=null");
 		}
 
 		if (ukimenUkitua()==1)
@@ -80,6 +82,10 @@ void jokoa01()
 			iprintf("\x1b[10;1HposY=%d", pos_pantaila.py);
 			printf("\x1b[12;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
 
+		}else{
+			iprintf("\x1b[8;1HposX=%d", 0);
+			iprintf("\x1b[10;1HposY=%d", 0);
+			printf("\x1b[12;1HRaw: %04X, %04X", 0, 0);
 		}
 		
 			
