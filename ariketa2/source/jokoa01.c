@@ -48,7 +48,7 @@ void jokoa01()
 	//***************************************************************************************//
 
 	
-	erakutsiAtea();
+	//erakutsiAtea();
 	while (1)
 	{	
 		/*************************************1.JARDUERAN**************************************/
@@ -65,12 +65,14 @@ void jokoa01()
 
 			//consoleClear();
 			tekla=SakatutakoTekla();
+			iprintf("\x1b[1;1H\033[K");
 			iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
 			//iprintf("\x1b[23;5HTekla sakatuta. Balioa=%c", lista[tekla]);
 
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
 		}else{
+			iprintf("\x1b[1;1H\033[K");
 			iprintf("\x1b[1;1HAldagai. Balioa=null");
 		}
 
@@ -78,11 +80,25 @@ void jokoa01()
 		{
 			pos_pantaila = ukimenPos(); 
 
+			
+			for (size_t i = 0; i < 3*2; i=i+2)
+			{
+				iprintf("\x1b[%d;1H\033[K", i+8);
+			
+			}
+			
+
 			iprintf("\x1b[8;1HposX=%d", pos_pantaila.px);
 			iprintf("\x1b[10;1HposY=%d", pos_pantaila.py);
 			printf("\x1b[12;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
 
 		}else{
+			for (size_t i = 0; i < 3*2; i=i+2)
+			{
+				iprintf("\x1b[%d;1H\033[K", i+8);
+			
+			}
+
 			iprintf("\x1b[8;1HposX=%d", 0);
 			iprintf("\x1b[10;1HposY=%d", 0);
 			printf("\x1b[12;1HRaw: %04X, %04X", 0, 0);

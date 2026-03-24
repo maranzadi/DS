@@ -103,7 +103,7 @@ for bana egin behar da.*/
 
 void SpriteakMemorianGorde(){ 
 	
-int i;
+	int i;
 	//16*16ko spriteentzako
 	for(i = 0; i < 16 * 16 / 2; i++) 
 	{	
