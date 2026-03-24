@@ -75,7 +75,7 @@ void jokoa01()
 			iprintf("\x1b[1;1H\033[K");
 			iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
 			//iprintf("\x1b[23;5HTekla sakatuta. Balioa=%c", lista[tekla]);
-			iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
+			// iprintf("\x1b[1;1HAldagai. Balioa=%s", lista[tekla]);
 
 			if (tekla=R)
 			{
@@ -96,19 +96,22 @@ void jokoa01()
 
 			if (tekla=GORA)
 			{
-				lista[kolorea]+=10;
+				rgb[kolorea]+=10;
 			}else if (tekla=BEHERA)
 			{
-				lista[kolorea]-=10;
+				rgb[kolorea]-=10;
 			}
-			if (lista[kolorea]<0)
+			if (rgb[kolorea]<0)
 			{
-				lista[kolorea]=0;
-			}else if (lista[kolorea]>255)
+				rgb[kolorea]=0;
+			}else if (rgb[kolorea]>255)
 			{
-				lista[kolorea]=255
+				rgb[kolorea]=255
 			}
-			
+
+			iprintf("\x1b[1;10H\033[K");
+			iprintf("\x1b[1;10HAldagai. RGB=%d, %d, %d", rgb[0], rgb[1], rgb[2]);
+			iprintf("\x1b[7;1HKolorea: %d", kolorea);
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
 		}else{
@@ -124,7 +127,6 @@ void jokoa01()
 			for (size_t i = 0; i < 2; i++)
 			{
 				iprintf("\x1b[%d;1H\033[K", i+6);
-			
 			}
 			
 
@@ -138,9 +140,9 @@ void jokoa01()
 			
 			}
 
-			iprintf("\x1b[8;1HposX=%d", 0);
-			iprintf("\x1b[10;1HposY=%d", 0);
-			iprintf("\x1b[12;1HRaw: %04X, %04X", 0, 0);
+			iprintf("\x1b[6;1HposX=%d, posY=%d", 0, 0);
+			iprintf("\x1b[7;1HRaw: %04X, %04X", 0, 0);
+
 		}
 		
 			
