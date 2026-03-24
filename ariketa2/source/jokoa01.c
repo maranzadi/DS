@@ -123,13 +123,13 @@ void jokoa01()
 			
 			for (size_t i = 0; i < 2; i++)
 			{
-				iprintf("\x1b[%d;1H\033[K", i+8);
+				iprintf("\x1b[%d;1H\033[K", i+6);
 			
 			}
 			
 
-			iprintf("\x1b[8;1HposX=%d, posY=%d", pos_pantaila.px, pos_pantaila.py);
-			iprintf("\x1b[9;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
+			iprintf("\x1b[6;1HposX=%d, posY=%d", pos_pantaila.px, pos_pantaila.py);
+			iprintf("\x1b[7;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
 
 		}else{
 			for (size_t i = 0; i < 3*2; i=i+2)
