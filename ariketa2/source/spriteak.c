@@ -207,3 +207,19 @@ void EzabatuErronboHandia(int indizea, int x, int y)
 
 /***********************2025-2026*******************************/
 
+
+/*ZIRKULUA*/
+void drawCircle(int cx, int cy, int radius, u16 color) {
+    for (int y = -radius; y <= radius; y++) {
+        for (int x = -radius; x <= radius; x++) {
+            if (x*x + y*y <= radius*radius) {
+                int px = cx + x;
+                int py = cy + y;
+
+                if (px >= 0 && px < 256 && py >= 0 && py < 192) {
+                    VRAM_A[py * 256 + px] = color;
+                }
+            }
+        }
+    }
+}
