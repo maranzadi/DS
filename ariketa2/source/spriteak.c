@@ -210,8 +210,10 @@ void EzabatuErronboHandia(int indizea, int x, int y)
 
 /*ZIRKULUA*/
 void drawCircle(int cx, int cy, int radius, u16 color) {
-    for (int y = -radius; y <= radius; y++) {
-        for (int x = -radius; x <= radius; x++) {
+	int y=0;
+	int x=0;
+    for (y = -radius; y <= radius; y++) {
+        for (x = -radius; x <= radius; x++) {
             if (x*x + y*y <= radius*radius) {
                 int px = cx + x;
                 int py = cy + y;
