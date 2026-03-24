@@ -89,7 +89,7 @@ void jokoa01()
 			}
 			
 			if(tekla=START){
-				emset(VRAM_A, 0, 256 * 192 * 2);
+				memset(VRAM_A, 0, 256 * 192 * 2);
 			}
 
 			if (kolorea>2)
