@@ -23,14 +23,16 @@ const char *lista[] = {"A", "B", "SELECT", "START", "ESKUBI","EZKER", "GORA", "B
 touchPosition pos_pantaila; // aldagai globala
 
 
-int *rgb[]={0,0,0}
-u16 color = RGB15(rgb[0], rgb[1], rgb[2]);
+
+u16 rgbKol15(int r, int g, int b);
 
 int kolorea=0;
 
 float presioa(int z1, int z2, int x);
 void jokoa01()
 {	
+	int rgbKol[3] = {0, 0, 0};
+    u16 color = rgbKol15(rgbKol[0], rgbKol[1], rgbKol[2]);
 	// Aldagai baten definizioa
 	int i=9;
 	int tekla=0;;
@@ -100,22 +102,22 @@ void jokoa01()
 
 			if (tekla=GORA)
 			{
-				rgb[kolorea]+=10;
+				rgbKol[kolorea]+=10;
 			}else if (tekla=BEHERA)
 			{
-				rgb[kolorea]-=10;
+				rgbKol[kolorea]-=10;
 			}
-			if (rgb[kolorea]<0)
+			if (rgbKol[kolorea]<0)
 			{
-				rgb[kolorea]=0;
-			}else if (rgb[kolorea]>255)
+				rgbKol[kolorea]=0;
+			}else if (rgbKol[kolorea]>255)
 			{
-				rgb[kolorea]=255
+				rgbKol[kolorea]=255;
 			}
-			color = RGB15(rgb[0], rgb[1], rgb[2]);
+			color = rgbKol15(rgbKol[0], rgbKol[1], rgbKol[2]);
 
 			iprintf("\x1b[1;10H\033[K");
-			iprintf("\x1b[1;10HAldagai. RGB=%d, %d, %d", rgb[0], rgb[1], rgb[2]);
+			iprintf("\x1b[1;10HAldagai. rgb=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
 			iprintf("\x1b[7;1HKolorea: %d", kolorea);
 
 			//iprintf("\x1b[50;5HTekla sakatuta. Balioa=%d", tekla);
@@ -128,8 +130,8 @@ void jokoa01()
 		{
 			pos_pantaila = ukimenPos(); 
 
-			
-			for (size_t i = 0; i < 3; i++)
+			size_t i;
+			for (i = 0; i < 3; i++)
 			{
 				iprintf("\x1b[%d;1H\033[K", i+6);
 			}
@@ -137,7 +139,7 @@ void jokoa01()
 
 			int x= pos_pantaila.px;
 			int y= pos_pantaila.py;
-			float pres= presioa(pos_pantaila.z1, pos_pantaila.z2, x)
+			float pres= presioa(pos_pantaila.z1, pos_pantaila.z2, x);
 			iprintf("\x1b[6;1HposX=%d, posY=%d", x, y);
 			iprintf("\x1b[7;1HRaw: %04X, %04X", pos_pantaila.z1, pos_pantaila.z2);
 			iprintf("\x1b[8;1HPres: %04X", pres);
@@ -157,14 +159,15 @@ void jokoa01()
 
 			// Escalar a radio
 			int radius = 1 + t * 20;
-			drawCircle(x, y, radius, color)
+			drawCircle(x, y, radius, color);
 
 
 			iprintf("\x1b[1;10H\033[K");
-			iprintf("\x1b[1;10HAldagai. RGB=%d, %d, %d", rgb[0], rgb[1], rgb[2]);
+			iprintf("\x1b[1;10HAldagai. rgbKol=%d, %d, %d", rgbKol[0], rgbKol[1], rgbKol[2]);
 
 		}else{
-			for (size_t i = 0; i < 3*2; i=i+2)
+			size_t i;
+			for (i = 0; i < 3*2; i=i+2)
 			{
 				iprintf("\x1b[%d;1H\033[K", i+8);
 			
@@ -184,7 +187,7 @@ void jokoa01()
 
 float presioa(int z1, int z2, int x){
 	if (z1 != 0) {
-		float rtouch = px * ((float)z2 / z1 - 1.0f);
+		float rtouch = x * ((float)z2 / z1 - 1.0f);
 
 		// Umbral típico
 		if (rtouch < 1000) {
