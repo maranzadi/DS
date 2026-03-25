@@ -161,7 +161,7 @@ void jokoa01()
 			// Escalar a radio
 			int radius = 1 + t * 20;
 			drawCircle(x, y, radius, color);
-			iprintf("\x1b[14;1HRadius: %d", radius);
+			iprintf("\x1b[16;1HRadius: %d", radius);
 
 
 			iprintf("\x1b[1;18H\033[K");
@@ -169,9 +169,9 @@ void jokoa01()
 
 		}else{
 			size_t i;
-			for (i = 0; i < 3*2; i=i+2)
+			for (i = 0; i < 2*2; i=i+2)
 			{
-				iprintf("\x1b[%d;1H\033[K", i+8);
+				iprintf("\x1b[%d;1H\033[K", i+12);
 			
 			}
 
