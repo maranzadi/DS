@@ -41,6 +41,12 @@ void jokoa01()
 	EGOERA=ZAI;
 
 	swiWaitForVBlank();
+
+	float tickS =0.5;
+	int bitX =1024;
+	int latch = 65.536 - (1/tickS)*33554432/bitX; //latc=0
+	DENB0_DAT = latch;
+	DENB0_KNT = 0x00C3; //1024
 	
 	
 	//iprintf("\x1b[22;5HHau idazte proba bat da");	// Hau 22 lerroan eta 5 zutabean hasiko da idazten.
