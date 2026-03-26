@@ -36,29 +36,29 @@ void tenpEten()
 	static int seg=0;
 	
 
-if (EGOERA!=ZAI)
-{
-	tik++; 
-	if (tik==5)
+	if (EGOERA!=ZAI)
 	{
-		seg++;
-		iprintf("\x1b[13;5HPasa diren segunduak=%d", seg);
-		tik=0;
-		if (EGOERA == IREKITA)
+		tik++; 
+		if (tik==5)
 		{
-			seg3++;
-			if (seg3==3)
+			seg++;
+			iprintf("\x1b[13;5HPasa diren segunduak=%d", seg);
+			tik=0;
+			if (EGOERA == IREKITA)
 			{
-				erakutsiAtea();
-				seg3=0;
-				EGOERA=ITXITA;
-				EzabatuErronboa(1, 5, 5);
-				EzabatuErronboHandia(2, 100, 100);
+				seg3++;
+				if (seg3==3)
+				{
+					erakutsiAtea();
+					seg3=0;
+					EGOERA=ITXITA;
+					EzabatuErronboa(1, 5, 5);
+					EzabatuErronboHandia(2, 100, 100);
+				}
 			}
+					
 		}
-				
 	}
-}
 	
 }
 
