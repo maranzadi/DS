@@ -16,18 +16,18 @@ int seg3;   // Hiru segundo pasatzen ote diren ikusten joateko
 
 void tekEten ()
 {
-if (EGOERA == ITXITA)
-{	
-	if (SakatutakoTekla()==A)
-	{
-		EGOERA=IREKITA;
-		iprintf("\x1b[13;5HPasa diren segunduak=0");
-		erakutsiAteaIrekita();
-		seg3=0;
-		ErakutsiErronboa(1, 5, 5);
-		ErakutsiErronboHandia(2, 100, 100);
+	if (EGOERA == ITXITA)
+	{	
+		if (SakatutakoTekla()==A)
+		{
+			EGOERA=IREKITA;
+			iprintf("\x1b[13;5HPasa diren segunduak=0");
+			erakutsiAteaIrekita();
+			seg3=0;
+			ErakutsiErronboa(1, 5, 5);
+			ErakutsiErronboHandia(2, 100, 100);
+		}
 	}
-}
 }
 
 void tenpEten()
