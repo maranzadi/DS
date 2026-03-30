@@ -22,7 +22,15 @@ adibide batean oinarrituta.
 int main(void) {
 //---------------------------------------------------------------------------------
 
-	HasieratuGrafikoakSpriteak();
+	//HasieratuGrafikoakSpriteak();
+
+
+	videoSetMode(MODE_5_2D);
+    vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
+
+    // 2. Setup Background 3
+    int bgId = bgInit(3, BgType_Bmp16, BgSize_B16_256x256, 0, 0);
+	
 	EtenakBaimendu();
 
 	// Zuen jokoari dei egingo zaio hemendik

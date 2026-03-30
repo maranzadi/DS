@@ -28,7 +28,11 @@ touchPosition pos_pantaila; // aldagai globala
 
 
 int kolorea=0;
-
+void drawPixel(int x, int y, u16 color) {
+    if (x >= 0 && x < 256 && y >= 0 && y < 192) {
+        framebuffer[y * 256 + x] = color;
+    }
+}
 float presioa(int z1, int z2, int x);
 void jokoa01()
 {	
@@ -40,7 +44,10 @@ void jokoa01()
 
 	EGOERA=ZAI;
 
-	swiWaitForVBlank();
+	for(int i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
+
+    // 4. Draw a red dot
+    drawPixel(128, 96, RGB15(31, 0, 0));
 
 	// float tickS =0.5;
 	// int bitX =1024;
@@ -69,6 +76,8 @@ void jokoa01()
 	//erakutsiAtea();
 	while (1)
 	{	
+		swiWaitForVBlank();
+
 		/*************************************1.JARDUERAN**************************************/
 		// ZAI egoeran dagoela, hemen teklatuaren inkesta egin, sakatu den tekla pantailaratu, eta START
 		// sakatzean egoera aldatu
