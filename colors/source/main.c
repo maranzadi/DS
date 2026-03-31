@@ -45,10 +45,41 @@ int main(void)
 {
 	REG_DISPCNT_MAIN = MODE_FB0;
 	VRAM_A_CR = VRAM_ENABLE;
+	lcdSwap();
 
 	setPixel(100, 100, COLOR(15,27,7));
-
+	int i;
+	int e;
+	int tekla;
 	while(1) {
+
+		if (TeklaDetektatu())
+		{
+			tekla=SakatutakoTekla();
+
+			if (tekla==START)
+			{
+				for(i = 0; i < SCREENHEIGHT; i++){
+					for(e = 0; i < SCREENWIDTH; e++){
+						setPixel(e, i, COLOR(0,0,0));
+					}
+				}
+							
+
+			}
+			if (tekla==SELECT)
+			{
+				for(i = 0; i < SCREENHEIGHT; i++){
+					for(e = 0; i < SCREENWIDTH; e++){
+						setPixel(e, i, COLOR(30,30,30));
+					}
+				}
+
+			}
+			
+		}
+		
+
         if (ukimenUkitua()) {
             touchPosition touch = ukimenPos();
             
@@ -63,7 +94,7 @@ int main(void)
     }
 }
 void setPixel(int row, int col, u16 color) {
-    VRAM_A[OFFSET(row, col, SCREENWIDTH)] = color;
+    VRAM_A[OFFSET(col, row, SCREENWIDTH)] = color;
 }
 void waitForVblank() {
     while (SCANLINECOUNTER > SCREENHEIGHT);
