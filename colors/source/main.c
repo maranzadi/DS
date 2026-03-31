@@ -23,6 +23,7 @@ int main(void) {
 //---------------------------------------------------------------------------------
 
 	//HasieratuGrafikoakSpriteak();
+	consoleDemoInit();
 
 
 	videoSetMode(MODE_5_2D);
