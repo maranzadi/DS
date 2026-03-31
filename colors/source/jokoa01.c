@@ -23,6 +23,7 @@ int denb; // denbora neurtzen joateko; baloratu ea beharrezkoa den
 const char *lista[] = {"A", "B", "SELECT", "START", "ESKUBI","EZKER", "GORA", "BEHERA", "R", "L"};
 touchPosition pos_pantaila; // aldagai globala
 int tekla;
+extern u16* framebuffer;
 
 
 
@@ -38,8 +39,8 @@ void jokoa01()
 	
 
 	EGOERA=ZAI;
-
-	for(int i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
+	int i;
+	for(i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
 
     // 4. Draw a red dot
     drawPixel(128, 96, RGB15(31, 0, 0));
@@ -58,7 +59,6 @@ void jokoa01()
 
 			if (tekla==START)
 			{
-				int i;
 				for(i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
 
 			}
