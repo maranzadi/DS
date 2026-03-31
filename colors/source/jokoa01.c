@@ -56,14 +56,15 @@ void jokoa01()
 		{
 			tekla=SakatutakoTekla();
 
-			if (tekla=START)
+			if (tekla==START)
 			{
-				for(int i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
+				int i;
+				for(i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(31,31,31);
 
 			}
-			if (tekla=SELECT)
+			if (tekla==SELECT)
 			{
-				for(int i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(0,0,0);
+				for(i = 0; i < 256 * 192; i++) framebuffer[i] = RGB15(0,0,0);
 
 			}
 			

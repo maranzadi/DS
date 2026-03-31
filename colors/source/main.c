@@ -17,7 +17,8 @@ adibide batean oinarrituta.
 #include "spriteak.h"
 #include "jokoa01.h"
 
-
+int bgId;
+extern u16* framebuffer;
 //---------------------------------------------------------------------------------
 int main(void) {
 //---------------------------------------------------------------------------------
@@ -30,7 +31,8 @@ int main(void) {
     vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
 
     // 2. Setup Background 3
-    int bgId = bgInit(3, BgType_Bmp16, BgSize_B16_256x256, 0, 0);
+    bgId = bgInit(3, BgType_Bmp16, BgSize_B16_256x256, 0, 0);
+	framebuffer = bgGetGfxPtr(bgId);
 	
 	EtenakBaimendu();
 
