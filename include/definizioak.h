@@ -28,7 +28,8 @@ definizioak.h
 
 
 // Ukimen-pantailaren erregistroak
-touchPosition PANT_DAT;
+extern touchPosition PANT_DAT;
+extern int tekla;
 
 // Teklei izena eman diegu programaren irakurgarritasuna hobetzeko
 

@@ -18,22 +18,21 @@ adibide batean oinarrituta.
 void hasieratuBideoa() {
     /*  Bi pantailatan irudiak erakutsi ahal izateko memoria mapeatu */
 
-    vramSetMainBanks(VRAM_A_MAIN_BG_0x06000000,
-                     VRAM_B_MAIN_BG_0x06020000,
-                     VRAM_C_SUB_BG_0x06200000,
-                     VRAM_E_LCD);
-
-    vramSetBankE(VRAM_E_MAIN_SPRITE);
+     // VRAM configuración moderna
+    vramSetBankA(VRAM_A_MAIN_BG);
+    vramSetBankB(VRAM_B_MAIN_BG);
+    vramSetBankC(VRAM_C_SUB_BG);
     vramSetBankD(VRAM_D_SUB_SPRITE);
+    vramSetBankE(VRAM_E_MAIN_SPRITE);
 
-    /*  Pantaila nagusirako bideo modua ezarri */
-    videoSetMode(MODE_5_2D | // 5. bideo modua ezarri
-                 DISPLAY_BG2_ACTIVE | // 2. fondoa aktibatu
-                 DISPLAY_BG3_ACTIVE); // 3. fondoa aktibatu
+    /* Pantaila nagusia (main screen) */
+    videoSetMode(MODE_5_2D |
+                 DISPLAY_BG2_ACTIVE |
+                 DISPLAY_BG3_ACTIVE);
 
-    /*  2. mailako pantaila bideo modua ezarri */
-    videoSetModeSub(MODE_5_2D | // 5. bideo modua ezarri
-                    DISPLAY_BG3_ACTIVE); // 3. fondoa aktibatu
+    /* Pantaila azpikoa (sub screen) */
+    videoSetModeSub(MODE_5_2D |
+                    DISPLAY_BG3_ACTIVE);
 }
 
 

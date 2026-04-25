@@ -21,8 +21,8 @@ adibide batean oinarrituta.
 int denb; // denbora neurtzen joateko; baloratu ea beharrezkoa den
 
 const char *lista[] = {"A", "B", "SELECT", "START", "ESKUBI","EZKER", "GORA", "BEHERA", "R", "L"};
-touchPosition pos_pantaila; // aldagai globala
-int tekla;
+//touchPosition pos_pantaila; // aldagai globala
+//int tekla;
 extern u16* framebuffer;
 
 
