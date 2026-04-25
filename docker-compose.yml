@@ -6,4 +6,4 @@ services:
     working_dir: /workspace
     volumes:
       - .:/workspace
-    command: sh -c "make clean && make"
+    command: sh -c "dkp-pacman -Sy --noconfirm nds-dev && make clean && make"
