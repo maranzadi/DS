@@ -1,2 +1,4 @@
 .DS_Store
 build/
+workspace.elf
+workspace.nds
