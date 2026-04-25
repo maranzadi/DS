@@ -35,3 +35,4 @@ extern void EzabatuErronboHandia(int indizea, int x, int y);
 
 /***********************2025-2026*******************************/
 
+extern void drawCircle(int cx, int cy, int radius, u16 color);

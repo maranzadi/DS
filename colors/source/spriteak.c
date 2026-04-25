@@ -103,7 +103,7 @@ for bana egin behar da.*/
 
 void SpriteakMemorianGorde(){ 
 	
-int i;
+	int i;
 	//16*16ko spriteentzako
 	for(i = 0; i < 16 * 16 / 2; i++) 
 	{	
@@ -122,88 +122,106 @@ int i;
 void ErakutsiErronboa(int indizea, int x, int y)
 { 
  
-oamSet(&oamMain, // main graphics engine context
-		indizea,           // oam index (0 to 127)  
-		x, y,   // x and y pixel location of the sprite
-		0,                    // priority, lower renders last (on top)
-		0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
-		SpriteSize_16x16,     
-		SpriteColorFormat_256Color, 
-		gfxerronbo,//+16*16/2,                  // pointer to the loaded graphics
-		-1,                  // sprite rotation data  
-		false,               // double the size when rotating?
-		false,			// hide the sprite?
-		false, false, // vflip, hflip
-		false	// apply mosaic
-		); 
-	  
-oamUpdate(&oamMain);  
+	oamSet(&oamMain, // main graphics engine context
+			indizea,           // oam index (0 to 127)  
+			x, y,   // x and y pixel location of the sprite
+			0,                    // priority, lower renders last (on top)
+			0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
+			SpriteSize_16x16,     
+			SpriteColorFormat_256Color, 
+			gfxerronbo,//+16*16/2,                  // pointer to the loaded graphics
+			-1,                  // sprite rotation data  
+			false,               // double the size when rotating?
+			false,			// hide the sprite?
+			false, false, // vflip, hflip
+			false	// apply mosaic
+			); 
+		
+	oamUpdate(&oamMain);  
 }
 
 /* Funtzio honek erronbo baten indizea pasata pantailatik ezabatzen du */
 void EzabatuErronboa(int indizea, int x, int y)
 {
 
-oamSet(&oamMain, // main graphics engine context
-		indizea,           // oam index (0 to 127)  
-		x, y,   // x and y pixel location of the sprite
-		0,                    // priority, lower renders last (on top)
-		0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
-		SpriteSize_16x16,     
-		SpriteColorFormat_256Color, 
-		gfxerronbo,//+16*16/2,                  // pointer to the loaded graphics
-		-1,                  // sprite rotation data  
-		false,               // double the size when rotating?
-		true,			// hide the sprite?
-		false, false, // vflip, hflip
-		false	// apply mosaic
-		); 
-oamUpdate(&oamMain); 
+	oamSet(&oamMain, // main graphics engine context
+			indizea,           // oam index (0 to 127)  
+			x, y,   // x and y pixel location of the sprite
+			0,                    // priority, lower renders last (on top)
+			0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
+			SpriteSize_16x16,     
+			SpriteColorFormat_256Color, 
+			gfxerronbo,//+16*16/2,                  // pointer to the loaded graphics
+			-1,                  // sprite rotation data  
+			false,               // double the size when rotating?
+			true,			// hide the sprite?
+			false, false, // vflip, hflip
+			false	// apply mosaic
+			); 
+	oamUpdate(&oamMain); 
 
 }
 
 void ErakutsiErronboHandia(int indizea, int x, int y)
 { 
  
-oamSet(&oamMain, // main graphics engine context
-		indizea,           // oam index (0 to 127)  
-		x, y,   // x and y pixel location of the sprite
-		0,                    // priority, lower renders last (on top)
-		0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
-		SpriteSize_32x32,     
-		SpriteColorFormat_256Color, 
-		gfxerronboHandia,//+16*16/2,                  // pointer to the loaded graphics
-		-1,                  // sprite rotation data  
-		false,               // double the size when rotating?
-		false,			// hide the sprite?
-		false, false, // vflip, hflip
-		false	// apply mosaic
-		); 
+	oamSet(&oamMain, // main graphics engine context
+			indizea,           // oam index (0 to 127)  
+			x, y,   // x and y pixel location of the sprite
+			0,                    // priority, lower renders last (on top)
+			0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
+			SpriteSize_32x32,     
+			SpriteColorFormat_256Color, 
+			gfxerronboHandia,//+16*16/2,                  // pointer to the loaded graphics
+			-1,                  // sprite rotation data  
+			false,               // double the size when rotating?
+			false,			// hide the sprite?
+			false, false, // vflip, hflip
+			false	// apply mosaic
+			); 
 
-	  
-oamUpdate(&oamMain);  
+		
+	oamUpdate(&oamMain);  
 }
 
 void EzabatuErronboHandia(int indizea, int x, int y)
 {
 
-oamSet(&oamMain, // main graphics engine context
-		indizea,           // oam index (0 to 127)  
-		x, y,   // x and y pixel location of the sprite
-		0,                    // priority, lower renders last (on top)
-		0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
-		SpriteSize_32x32,     
-		SpriteColorFormat_256Color, 
-		gfxerronboHandia,//+16*16/2,                  // pointer to the loaded graphics
-		-1,                  // sprite rotation data  
-		false,               // double the size when rotating?
-		true,			// hide the sprite?
-		false, false, // vflip, hflip
-		false	// apply mosaic
-		); 
-oamUpdate(&oamMain); 
+	oamSet(&oamMain, // main graphics engine context
+			indizea,           // oam index (0 to 127)  
+			x, y,   // x and y pixel location of the sprite
+			0,                    // priority, lower renders last (on top)
+			0,					  // this is the palette index if multiple palettes or the alpha value if bmp sprite	
+			SpriteSize_32x32,     
+			SpriteColorFormat_256Color, 
+			gfxerronboHandia,//+16*16/2,                  // pointer to the loaded graphics
+			-1,                  // sprite rotation data  
+			false,               // double the size when rotating?
+			true,			// hide the sprite?
+			false, false, // vflip, hflip
+			false	// apply mosaic
+			); 
+	oamUpdate(&oamMain); 
 
 }
 
 /***********************2025-2026*******************************/
 
+
+/*ZIRKULUA*/
+void drawCircle(int cx, int cy, int radius, u16 color) {
+	int y=0;
+	int x=0;
+    for (y = -radius; y <= radius; y++) {
+        for (x = -radius; x <= radius; x++) {
+            if (x*x + y*y <= radius*radius) {
+                int px = cx + x;
+                int py = cy + y;
+
+                if (px >= 0 && px < 256 && py >= 0 && py < 192) {
+                    VRAM_A[py * 256 + px] = color;
+                }
+            }
+        }
+    }
+}
